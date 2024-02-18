@@ -1,0 +1,451 @@
+ARRAY SIZE 4
+
+real	0m0.006s
+user	0m0.000s
+sys	0m0.006s
+
+
+ARRAY SIZE 404
+
+real	0m0.066s
+user	0m0.056s
+sys	0m0.010s
+
+
+ARRAY SIZE 804
+
+real	0m0.438s
+user	0m0.425s
+sys	0m0.013s
+
+
+ARRAY SIZE 1204
+
+real	0m1.494s
+user	0m1.479s
+sys	0m0.010s
+
+
+ARRAY SIZE 1604
+
+real	0m3.641s
+user	0m3.597s
+sys	0m0.030s
+
+
+ARRAY SIZE 2004
+
+real	0m7.102s
+user	0m7.024s
+sys	0m0.050s
+
+
+ARRAY SIZE 2404
+
+real	0m12.217s
+user	0m12.082s
+sys	0m0.087s
+
+
+ARRAY SIZE 2804
+
+real	0m19.363s
+user	0m19.199s
+sys	0m0.087s
+
+
+ARRAY SIZE 3204
+
+real	0m28.842s
+user	0m28.605s
+sys	0m0.123s
+
+
+ARRAY SIZE 3604
+
+real	0m41.000s
+user	0m40.675s
+sys	0m0.166s
+
+
+ARRAY SIZE 4004
+
+real	0m56.154s
+user	0m55.739s
+sys	0m0.200s
+
+
+ARRAY SIZE 4404
+
+real	1m14.695s
+user	1m14.224s
+sys	0m0.186s
+
+
+ARRAY SIZE 4804
+
+real	1m36.894s
+user	1m36.250s
+sys	0m0.273s
+
+
+ARRAY SIZE 5204
+
+real	2m3.177s
+user	2m2.482s
+sys	0m0.229s
+
+
+ARRAY SIZE 5604
+
+real	2m33.731s
+user	2m32.838s
+sys	0m0.302s
+
+
+ARRAY SIZE 6004
+
+real	3m8.972s
+user	3m7.840s
+sys	0m0.409s
+
+
+ARRAY SIZE 6404
+
+real	3m49.295s
+user	3m47.883s
+sys	0m0.532s
+
+
+ARRAY SIZE 6804
+
+real	4m34.987s
+user	4m33.446s
+sys	0m0.499s
+
+
+ARRAY SIZE 7204
+
+real	5m26.120s
+user	5m24.366s
+sys	0m0.525s
+
+
+ARRAY SIZE 7604
+
+real	6m23.459s
+user	6m21.420s
+sys	0m0.595s
+
+
+ARRAY SIZE 8004
+
+real	7m27.325s
+user	7m25.019s
+sys	0m0.591s
+
+
+ARRAY SIZE 8404
+
+real	8m37.454s
+user	8m34.828s
+sys	0m0.688s
+
+
+ARRAY SIZE 8804
+
+real	9m54.851s
+user	9m51.785s
+sys	0m0.831s
+
+
+ARRAY SIZE 9204
+
+real	11m20.111s
+user	11m16.644s
+sys	0m0.914s
+
+
+ARRAY SIZE 9604
+
+real	12m52.452s
+user	12m48.629s
+sys	0m0.867s
+
+
+ARRAY SIZE 10004
+
+real	14m33.191s
+user	14m28.853s
+sys	0m1.037s
+
+
+ARRAY SIZE 10404
+
+real	16m22.078s
+user	16m17.321s
+sys	0m1.066s
+
+
+ARRAY SIZE 10804
+
+real	18m19.613s
+user	18m14.337s
+sys	0m1.169s
+
+
+ARRAY SIZE 11204
+
+real	20m25.946s
+user	20m20.340s
+sys	0m0.957s
+
+
+ARRAY SIZE 11604
+
+real	22m41.175s
+user	22m34.664s
+sys	0m1.448s
+
+
+ARRAY SIZE 12004
+
+real	25m7.853s
+user	25m0.674s
+sys	0m1.531s
+
+
+ARRAY SIZE 12404
+
+real	27m42.456s
+user	27m34.503s
+sys	0m1.774s
+
+
+ARRAY SIZE 12804
+
+real	30m29.672s
+user	30m21.141s
+sys	0m1.681s
+
+
+ARRAY SIZE 13204
+
+real	33m25.524s
+user	33m16.194s
+sys	0m1.810s
+
+
+ARRAY SIZE 13604
+
+real	36m34.339s
+user	36m24.213s
+sys	0m1.900s
+
+
+ARRAY SIZE 14004
+
+real	39m52.920s
+user	39m42.069s
+sys	0m1.814s
+
+
+ARRAY SIZE 14404
+
+real	43m22.430s
+user	43m10.359s
+sys	0m2.215s
+
+
+ARRAY SIZE 14804
+
+real	47m6.867s
+user	46m53.685s
+sys	0m2.385s
+
+
+ARRAY SIZE 15204
+
+real	51m0.248s
+user	50m46.073s
+sys	0m2.567s
+
+
+ARRAY SIZE 15604
+
+real	55m9.347s
+user	54m53.868s
+sys	0m2.756s
+
+
+ARRAY SIZE 16004
+
+real	59m28.792s
+user	59m12.766s
+sys	0m2.604s
+
+
+ARRAY SIZE 16404
+
+real	64m4.779s
+user	63m47.175s
+sys	0m2.853s
+
+
+ARRAY SIZE 16804
+
+real	68m50.822s
+user	68m32.226s
+sys	0m3.175s
+
+
+ARRAY SIZE 17204
+
+real	73m56.074s
+user	73m36.630s
+sys	0m2.906s
+
+
+ARRAY SIZE 17604
+
+real	79m11.948s
+user	78m50.715s
+sys	0m3.218s
+
+
+ARRAY SIZE 18004
+
+real	84m43.242s
+user	84m20.412s
+sys	0m3.477s
+
+
+ARRAY SIZE 18404
+
+real	90m28.438s
+user	90m4.125s
+sys	0m3.504s
+
+
+ARRAY SIZE 18804
+
+real	96m31.466s
+user	96m5.946s
+sys	0m3.700s
+
+
+ARRAY SIZE 19204
+
+real	102m46.026s
+user	102m18.872s
+sys	0m3.959s
+
+
+ARRAY SIZE 19604
+
+real	109m19.701s
+user	108m51.016s
+sys	0m3.972s
+
+
+ARRAY SIZE 20004
+
+real	116m10.691s
+user	115m39.638s
+sys	0m4.158s
+
+
+ARRAY SIZE 20404
+
+real	123m14.462s
+user	122m41.939s
+sys	0m4.433s
+
+
+ARRAY SIZE 20804
+
+real	130m38.767s
+user	130m4.630s
+sys	0m4.646s
+
+
+ARRAY SIZE 21204
+
+real	138m16.948s
+user	137m41.155s
+sys	0m4.739s
+
+
+ARRAY SIZE 21604
+
+real	146m19.419s
+user	145m40.618s
+sys	0m4.984s
+
+
+ARRAY SIZE 22004
+
+real	154m31.985s
+user	153m51.912s
+sys	0m4.982s
+
+
+ARRAY SIZE 22404
+
+real	163m9.898s
+user	162m27.747s
+sys	0m5.224s
+
+
+ARRAY SIZE 22804
+
+real	172m6.200s
+user	171m21.970s
+sys	0m5.377s
+
+
+ARRAY SIZE 23204
+
+real	181m13.972s
+user	180m26.885s
+sys	0m5.938s
+
+
+ARRAY SIZE 23604
+
+real	190m50.059s
+user	190m0.465s
+sys	0m6.008s
+
+
+ARRAY SIZE 24004
+
+real	200m43.363s
+user	199m51.558s
+sys	0m5.988s
+
+
+ARRAY SIZE 24404
+
+
+ARRAY SIZE 25904
+
+real	252m20.787s
+user	251m16.256s
+sys	0m7.200s
+
+
+ARRAY SIZE 27404
+
+real	298m39.308s
+user	297m23.597s
+sys	0m7.915s
+
+
+ARRAY SIZE 28904
+
+real	350m23.133s
+user	348m54.230s
+sys	0m9.631s
+
+

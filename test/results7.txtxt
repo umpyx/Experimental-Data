@@ -1,0 +1,33 @@
+ARRAY SIZE: 18000
+ARRAY SIZE: 18000
+ARRAY SIZE: 18000
+ARRAY SIZE: 18000
+ARRAY SIZE: 18000
+ARRAY SIZE: 18001
+ARRAY SIZE: 18002
+ARRAY SIZE: 18003
+ARRAY SIZE: 18004
+ARRAY SIZE: 18005
+ARRAY SIZE: 18006
+ARRAY SIZE: 18007
+ARRAY SIZE: 18008
+ARRAY SIZE: 18009
+ARRAY SIZE: 18010
+ARRAY SIZE: 18011
+ARRAY SIZE: 18012
+Tracing block device I/O... Hit Ctrl-C to end.
+
+     msecs               : count     distribution
+         0 -> 1          : 56       |****************************************|
+         2 -> 3          : 2        |*                                       |
+         4 -> 7          : 2        |*                                       |
+         8 -> 15         : 30       |*********************                   |
+        16 -> 31         : 40       |****************************            |
+        32 -> 63         : 1        |                                        |
+ARRAY SIZE: 2000
+ARRAY SIZE: 2001
+ARRAY SIZE: 2002
+ARRAY SIZE: 2003
+ARRAY SIZE: 2004
+ARRAY SIZE: 9000
+ARRAY SIZE: 9001
