@@ -1,0 +1,27 @@
+tests.bash: line 14:   656 Killed                  ./bad_program $input $input $input $input
+
+real	0m6.411s
+user	0m3.878s
+sys	0m1.498s
+tests.bash: line 14:   661 Killed                  ./bad_program $input $input $input $input
+
+real	0m7.344s
+user	0m3.999s
+sys	0m1.956s
+tests.bash: line 14:   666 Killed                  ./bad_program $input $input $input $input
+
+real	0m6.728s
+user	0m4.042s
+sys	0m1.951s
+
+real	58m28.842s
+user	58m11.410s
+sys	0m3.763s
+
+real	76m33.791s
+user	76m10.985s
+sys	0m4.686s
+
+real	98m43.089s
+user	98m11.718s
+sys	0m6.930s

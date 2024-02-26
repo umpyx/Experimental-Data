@@ -4,8 +4,8 @@ read input
 
 while [ $input -lt 30000 ]
 do
-	echo ARRAY SIZE: $input >> results7.txtxt
-	bash ./thing7.bash &
+	echo ARRAY SIZE: $input >> Results/UNUSED_BIOLATENCY.txt
+	bash ./biolatencyLogger.bash &
 	PID=$!
 	./bad_program $input $input $input $input 
 	input=$((input + 1))
