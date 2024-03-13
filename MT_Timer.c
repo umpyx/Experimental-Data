@@ -9,7 +9,7 @@
 int main(int argc, char *argv[]){
 	srand(time(NULL));
 	
-	goto_set_num_threads(4);
+	struct timespec initialTime, finalTime;
 	openblas_set_num_threads(4);
 	if (argc != 5) {
 		printf("Usage: program [ROWS_A]... [COLS_A]... [ROWS_B]... [COLS_B]...\nCreates a 2D array A of rows [rows_A] and cols [cols_A] and multiplies it with blas_sgemm to matrix B of [rows_B] and [cols_B]\nYou provided %d arguments, please provide 4 arguments\n", argc - 1);
@@ -26,35 +26,35 @@ int main(int argc, char *argv[]){
 		exit(1);
 	}
 
+	clock_gettime(CLOCK_REALTIME, &initialTime);
 	float *amatrix = malloc (acols * arows * sizeof(float));
 	for (int i = 0; i < acols; i++){
 		for (int x = 0; x < arows; x++){
-			amatrix[x + i * acols] = 3.0;
+			amatrix[x + i * acols] = rand();
 		}
 	}
-	puts("Done with A!");
+	clock_gettime(CLOCK_REALTIME, &finalTime);
+	printf("A: %lu nanoseconds\n", finalTime.tv_nsec - initialTime.tv_nsec);
 
 	float *bmatrix = malloc (bcols * brows * sizeof(float));
+	clock_gettime(CLOCK_REALTIME, &initialTime);
 	for (int i = 0; i < bcols; i++){
 		for (int x = 0; x < brows; x++){
-			bmatrix[x + i * acols] = 3.0;
+			bmatrix[x + i * acols] = rand();
 		}
 	}
-	puts("Done with B!");
+	clock_gettime(CLOCK_REALTIME, &finalTime);
+	printf("B: %lu nanoseconds\n", finalTime.tv_nsec - initialTime.tv_nsec);
 
 	int *ccols = &bcols; 
 	int *crows = &arows;
 	float *cmatrix = malloc (arows * bcols * sizeof(float));
-	puts("Done with C!");
+	puts("C initialized\n");
 
+	clock_gettime(CLOCK_REALTIME, &initialTime);
 	cblas_sgemm(CblasRowMajor, CblasNoTrans, CblasTrans, arows, bcols, acols, 1.0, amatrix, acols, bmatrix, bcols, 1.0, cmatrix, *ccols);
-/*	for (int i = 0; i < *ccols; i++){
-		for (int x = 0; x < *crows; x++){
-			printf("%f|", cmatrix[x + i * *ccols]);
-		}
-		puts("\n");
-	}*/
-	puts("Done with MULT!");
+	clock_gettime(CLOCK_REALTIME, &finalTime);
+	printf("Mult: %lu nanoseconds\n", finalTime.tv_nsec - initialTime.tv_nsec);
 
 
 	free(amatrix);
