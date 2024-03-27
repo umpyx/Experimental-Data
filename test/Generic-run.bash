@@ -1,7 +1,7 @@
-echo ARRAY SQUARE SIZE:
-read input
+logger=$1
+arrsize=$1
 
-exec ./iostat-logger.bash &
+exec ./$logger &
 
 sleep 1
 PID=$(cat PID.txt)
@@ -11,7 +11,7 @@ kill -10 $PID
 while [ $input -lt 33000 ]
 do
 	kill -10 $PID
-	echo ARRAY SIZE: $input >> Results/Iostat.txt
-	./bad_program $input $input $input $input 
-	input=$((input + 1500))
+	echo ARRAY SIZE: $arrsize >> Results/Iostat.txt
+	./bad_program $arrsize $arrsize $arrsize $arrsize 
+	arrsize=$((input + 1500))
 done
