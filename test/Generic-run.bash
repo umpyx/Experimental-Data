@@ -1,13 +1,13 @@
-arrsize=$1
-maxarrsize=$2
-outputfile=$3
-interval=$4
+ARRSIZE=$1
+MAXARRSIZE=$2
+OUTPUTFILE=$3
+ARRSIZEINTERVAL=$4
 
 kill -10 $PPID
-while [ $input -lt $maxarrsize ]
+while [ $ARRSIZE -lt $MAXARRSIZE ]
 do
 	kill -10 $PID
-	echo ARRAY SIZE: $arrsize >> $3
-	./bad_program $arrsize $arrsize $arrsize $arrsize 
-	arrsize=$((input + $interval))
+	echo $(date '+%H:%M:%S') = ARRAY SIZE: $ARRSIZE >> $OUTPUTFILE 
+	./bad_program $ARRSIZE $ARRSIZE $ARRSIZE $ARRSIZE 
+	ARRSIZE=$(($ARRSIZE + $ARRSIZEINTERVAL))
 done

@@ -1,4 +1,5 @@
 #! /bin/bash
+#OLD - DON'T USE
 
 #Automated testing of program with high swap usage
 
