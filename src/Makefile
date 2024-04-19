@@ -1,7 +1,7 @@
-CC = gcc
-LIBS = cblas
+all: singlethread multithread
 
-all: main
+singlethread: singlethread.c 
+	cc -o test/singlethread_target -lcblas singlethread.c
 
-main: main.c 
-	gcc -g -o test/bad_program -l$(LIBS) main.c
+multithread: multithread.c
+	cc -o test/multithread_target -lcblas multithread.c

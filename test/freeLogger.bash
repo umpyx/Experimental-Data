@@ -2,19 +2,20 @@
 
 OUTPUTDIR=$1
 LOGINTERVAL=$2
+ARRSIZE=$3
+ARRSIZEINTERVAL=$4
 
 function SIGUSR1_HANDLE(){
-	sleep 1
-}
-function SIGUSR2_HANDLE(){
-	running=false
+	echo $ARRSIZE\n >> $OUTPUTDIR/freeData.txt
+	ARRSIZE=$(($ARRSIZE + $ARRSIZEINTERVAL))
 }
 
+
+echo $$ >> PID.txt
 
 running=true
+
 trap SIGUSR1_HANDLE SIGUSR1
-trap SIGUSR2_HANDLE SIGUSR2
-echo $$ > PID.txt
 
 while [ $running = true ]; do 
 	free -h >> $OUTPUTDIR/freeData.txt

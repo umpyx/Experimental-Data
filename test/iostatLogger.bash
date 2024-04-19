@@ -1,21 +1,20 @@
 #! /bin/bash
 OUTPUTDIR=$1
 LOGINTERVAL=$2
+ARRSIZE=$3
+ARRSIZEINTERVAL=$4
 
 function SIGUSR1_HANDLE(){
-	sleep 1
+	echo $ARRSIZE\n >> $OUTPUTDIR/iostatData.txt
+	ARRSIZE=$(($ARRSIZE + $ARRSIZEINTERVAL))
 }
-function SIGUSR2_HANDLE(){
-	running=false
-}
-
 
 running=true
 trap SIGUSR1_HANDLE SIGUSR1
-trap SIGUSR2_HANDLE SIGUSR2
-echo $$ > PID.txt
 
-while [ $running = true ]; do 
+echo $$ >> PID.txt
+
+while true; do 
 	echo R_AWAIT: $(iostat -xz | grep sda | awk '{print $6}') >> $OUTPUTDIR/iostatData.txt
 	sleep $LOGINTERVAL
 done
