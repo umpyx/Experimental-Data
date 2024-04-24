@@ -1,4 +1,5 @@
-# Logs data from biolatency eBPF tool to 
+#!/bin/env bash
+# Logs data from biolatency eBPF tool to $OUTPUTFILE
 
 OUTPUTDIR=$1
 PATHTOBCC=$2

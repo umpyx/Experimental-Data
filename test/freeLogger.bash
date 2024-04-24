@@ -1,3 +1,4 @@
+#!/bin/env bash
 #Logs output of 'free' command 
 
 OUTPUTDIR=$1
