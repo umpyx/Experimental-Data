@@ -2,15 +2,12 @@
 #include <stdio.h>
 #include <time.h>
 #include <cblas.h>
-#include <openblas_config.h>
-#include <cblas_64.h>
 
 
 int main(int argc, char *argv[]){
 	srand(time(NULL));
 	
 	struct timespec initialTime, finalTime;
-	openblas_set_num_threads(4);
 	if (argc != 5) {
 		printf("Usage: program [ROWS_A]... [COLS_A]... [ROWS_B]... [COLS_B]...\nCreates a 2D array A of rows [rows_A] and cols [cols_A] and multiplies it with blas_sgemm to matrix B of [rows_B] and [cols_B]\nYou provided %d arguments, please provide 4 arguments\n", argc - 1);
 		exit(1);

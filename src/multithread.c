@@ -11,6 +11,7 @@ int main(int argc, char *argv[]){
 	
 	struct timespec initialTime, finalTime;
 
+	goto_set_num_threads(4);
 	openblas_set_num_threads(4);
 
 	if (argc != 5) {
