@@ -1,9 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#include <cblas.h>
-#include <openblas_config.h>
-#include <cblas_64.h>
+#include <openblas/cblas.h>
+#include <openblas/openblas_config.h>
 
 
 int main(int argc, char *argv[]){
