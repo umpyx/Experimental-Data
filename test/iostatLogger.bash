@@ -14,8 +14,5 @@ trap SIGUSR1_HANDLE SIGUSR1
 
 echo $$ >> PID.txt
 
-while true; do 
-	echo R_AWAIT: $(iostat -xz | grep sda | awk '{print $6}') >> $OUTPUTDIR/iostatData.txt
-	sleep $LOGINTERVAL
-done
-
+	#echo R_AWAIT: $(iostat -xz | grep sda | awk '{print $6}') >> $OUTPUTDIR/iostatData.txt
+iostat -xzt $LOGINTERVAL >> $OUTPUTDIR/iostatData.txt

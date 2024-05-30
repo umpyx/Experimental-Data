@@ -7,6 +7,7 @@ ARRSIZE=$3
 ARRSIZEINTERVAL=$4
 
 function SIGUSR1_HANDLE(){
+	touch $OUTPUTDIR/freeData.txt
 	echo $ARRSIZE\n >> $OUTPUTDIR/freeData.txt
 	ARRSIZE=$(($ARRSIZE + $ARRSIZEINTERVAL))
 }
@@ -14,11 +15,7 @@ function SIGUSR1_HANDLE(){
 
 echo $$ >> PID.txt
 
-running=true
 
 trap SIGUSR1_HANDLE SIGUSR1
 
-while [ $running = true ]; do 
-	free -h >> $OUTPUTDIR/freeData.txt
-	sleep $LOGINTERVAL
-done
+free -bs $LOGINTERVAL >> $OUTPUTDIR/freeData.txt
