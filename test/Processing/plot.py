@@ -35,7 +35,7 @@ def convertCSV2Arr(inpt):
 if __name__ == "__main__":
 
     if len(sys.argv) != 3:
-        print("USAGE: plot.py [X AXIS VALUES] [Y AXIS VALUES]\nXVALUES and YVALUES can be comma-separated strings of numbers, or "FILE={FILENAME}\nEXAMPLE:\nplot.py 1,2,3,4 2,4,6,8\nplot.py FILE=XVALUES FILE=YVALUES")
+        print("USAGE: plot.py [X AXIS VALUES] [Y AXIS VALUES]\nXVALUES and YVALUES can be comma-separated strings of numbers, or \"FILE={FILENAME}\"\n\nEXAMPLE:\n\tplot.py 1,2,3,4 2,4,6,8\n\tplot.py FILE=XVALUES FILE=YVALUES\n\tplot.py FILE=XVALUES 2,4,6,8\n\tplot.py 1,2,3,4 FILE=YVALUES")
         exit(1)
 
 
