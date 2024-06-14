@@ -33,11 +33,19 @@ def convertCSV2Arr(inpt):
         i += 1
     return OUTPUT
 
+def procArg(arg, AXISVALUES):
+    if arg[0] == "F" and arg[1] == "I" and arg[2] == "L" and arg[3] == "E" and arg[4] == "=":
+        filename = arg[5:]
+        with open(filename, 'r') as TMPFILE:
+            TMPSTR = TMPFILE.read()
+            AXISVALUES.append = convertCSV2Arr(XSTR)
+            TMPFILE.close()
+    else:
+        AXISVALUES.append = convertCSV2Arr(sys.argv[1])
+
 if __name__ == "__main__":
 
-    if len(sys.argv) != 6:
-        print("USAGE: plot.py [X AXIS VALUES] [X AXIS LABEL] [Y AXIS VALUES] [Y AXIS LABEL] [OUTPUT GRAPH NAME]\nXVALUES and YVALUES can be comma-separated strings of numbers, or \"FILE={FILENAME}\"\n\nEXAMPLE:\n\tplot.py 1,2,3,4 X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES  X_AXIS_LABEL FILE=YVALUE Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py 1,2,3,4 X_AXIS_LABEL FILE=YVALUES Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION")
-        exit(1)
+    print("USAGE: plot.py [X AXIS VALUES] [X AXIS LABEL] [Y AXIS VALUES] [Y AXIS LABEL] [OUTPUT GRAPH NAME]\nXVALUES and YVALUES can be comma-separated strings of numbers, or \"FILE={FILENAME}\"\n\nEXAMPLE:\n\tplot.py 1,2,3,4 X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES  X_AXIS_LABEL FILE=YVALUE Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py 1,2,3,4 X_AXIS_LABEL FILE=YVALUES Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION")
 
 
 
@@ -66,5 +74,15 @@ if __name__ == "__main__":
 
     plt.xlabel(sys.argv[2])
     plt.ylabel(sys.argv[4])
-    plt.plot(XVALUES, YVALUES, marker = 'o')
-    plt.savefig(sys.argv[5], bbox_inches = 'tight')
+    lineIndex = 5
+    while lineIndex < len(sys.argv) - 2:
+        if lineIndex % 2 == 1:
+            procArg(sys.argv[lineIndex], plotXvalues)
+        else: 
+            procArg(sys.argv[lineIndex], plotYvalues)
+
+    i = 0
+    while i < len(XVALUES):
+        plt.plot(plotXvalues[i], plotYvalues[i], marker = 'o')
+
+    plt.savefig((len(sys.argv) - 1), bbox_inches = 'tight')
