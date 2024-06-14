@@ -1,3 +1,4 @@
+#!/bin/python
 import matplotlib
 import matplotlib.pyplot as plt
 import sys
@@ -34,8 +35,8 @@ def convertCSV2Arr(inpt):
 
 if __name__ == "__main__":
 
-    if len(sys.argv) != 3:
-        print("USAGE: plot.py [X AXIS VALUES] [Y AXIS VALUES]\nXVALUES and YVALUES can be comma-separated strings of numbers, or \"FILE={FILENAME}\"\n\nEXAMPLE:\n\tplot.py 1,2,3,4 2,4,6,8\n\tplot.py FILE=XVALUES FILE=YVALUES\n\tplot.py FILE=XVALUES 2,4,6,8\n\tplot.py 1,2,3,4 FILE=YVALUES")
+    if len(sys.argv) != 6:
+        print("USAGE: plot.py [X AXIS VALUES] [X AXIS LABEL] [Y AXIS VALUES] [Y AXIS LABEL] [OUTPUT GRAPH NAME]\nXVALUES and YVALUES can be comma-separated strings of numbers, or \"FILE={FILENAME}\"\n\nEXAMPLE:\n\tplot.py 1,2,3,4 X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES  X_AXIS_LABEL FILE=YVALUE Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py 1,2,3,4 X_AXIS_LABEL FILE=YVALUES Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION")
         exit(1)
 
 
@@ -51,17 +52,19 @@ if __name__ == "__main__":
     
 
 
-    if sys.argv[2][0] == "F" and sys.argv[2][1] == "I" and sys.argv[2][2] == "L" and sys.argv[2][3] == "E" and sys.argv[2][4] == "=":
-        workingstr = sys.argv[2][5:]
+    if sys.argv[3][0] == "F" and sys.argv[3][1] == "I" and sys.argv[3][2] == "L" and sys.argv[3][3] == "E" and sys.argv[3][4] == "=":
+        workingstr = sys.argv[3][5:]
         with open(workingstr, 'r') as YFILE:
             YSTR = YFILE.read()
             YVALUES = convertCSV2Arr(YSTR)
     else:
-        YVALUES = convertCSV2Arr(sys.argv[2])
+        YVALUES = convertCSV2Arr(sys.argv[3])
             
 
     print(XVALUES, "\n", YVALUES)
 
 
+    plt.xlabel(sys.argv[2])
+    plt.ylabel(sys.argv[4])
     plt.plot(XVALUES, YVALUES, marker = 'o')
-    plt.show()
+    plt.savefig(sys.argv[5], bbox_inches = 'tight')
