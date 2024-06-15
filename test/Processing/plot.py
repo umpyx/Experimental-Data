@@ -3,6 +3,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import sys
 
+MINARGS = 6
 
 def charAr2Int(inpt):
     a = len(inpt) - 1
@@ -33,56 +34,53 @@ def convertCSV2Arr(inpt):
         i += 1
     return OUTPUT
 
-def procArg(arg, AXISVALUES):
+def procArg(arg):
     if arg[0] == "F" and arg[1] == "I" and arg[2] == "L" and arg[3] == "E" and arg[4] == "=":
         filename = arg[5:]
         with open(filename, 'r') as TMPFILE:
             TMPSTR = TMPFILE.read()
-            AXISVALUES.append = convertCSV2Arr(XSTR)
             TMPFILE.close()
+            return convertCSV2Arr(TMPSTR)
     else:
-        AXISVALUES.append = convertCSV2Arr(sys.argv[1])
+        return convertCSV2Arr(arg)
 
 if __name__ == "__main__":
 
-    print("USAGE: plot.py [X AXIS VALUES] [X AXIS LABEL] [Y AXIS VALUES] [Y AXIS LABEL] [OUTPUT GRAPH NAME]\nXVALUES and YVALUES can be comma-separated strings of numbers, or \"FILE={FILENAME}\"\n\nEXAMPLE:\n\tplot.py 1,2,3,4 X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES  X_AXIS_LABEL FILE=YVALUE Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py 1,2,3,4 X_AXIS_LABEL FILE=YVALUES Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION")
+    for i in sys.argv:
+        print(i)
+        print()
+    if len(sys.argv) - 1 < MINARGS:
+        print("USAGE: plot.py [X AXIS LABEL] [Y AXIS LABEL] [LINE 1 X VALUES] [LINE 1 Y VALUES] [LINE 1 LABEL] ... [OUTPUT GRAPH NAME]\nXVALUES and YVALUES can be comma-separated strings of numbers, or \"FILE={FILENAME}\"\n\nEXAMPLE:\n\tplot.py 1,2,3,4 X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES  X_AXIS_LABEL FILE=YVALUE Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py 1,2,3,4 X_AXIS_LABEL FILE=YVALUES Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION")
+        exit(1)
 
 
 
-    if sys.argv[1][0] == "F" and sys.argv[1][1] == "I" and sys.argv[1][2] == "L" and sys.argv[1][3] == "E" and sys.argv[1][4] == "=":
-        workingstr = sys.argv[1][5:]
-        with open(workingstr, 'r') as XFILE:
-            XSTR = XFILE.read()
-            XVALUES = convertCSV2Arr(XSTR)
-            XFILE.close()
-    else:
-        XVALUES = convertCSV2Arr(sys.argv[1])
-    
+    plt.xlabel(sys.argv[1])
+    plt.ylabel(sys.argv[2])
 
 
-    if sys.argv[3][0] == "F" and sys.argv[3][1] == "I" and sys.argv[3][2] == "L" and sys.argv[3][3] == "E" and sys.argv[3][4] == "=":
-        workingstr = sys.argv[3][5:]
-        with open(workingstr, 'r') as YFILE:
-            YSTR = YFILE.read()
-            YVALUES = convertCSV2Arr(YSTR)
-    else:
-        YVALUES = convertCSV2Arr(sys.argv[3])
-            
-
-    print(XVALUES, "\n", YVALUES)
-
-
-    plt.xlabel(sys.argv[2])
-    plt.ylabel(sys.argv[4])
-    lineIndex = 5
-    while lineIndex < len(sys.argv) - 2:
-        if lineIndex % 2 == 1:
-            procArg(sys.argv[lineIndex], plotXvalues)
-        else: 
-            procArg(sys.argv[lineIndex], plotYvalues)
-
+    plotXvalues = []
+    plotYvalues = []
+    plotLabels  = []
+    lineIndex = 3
+    tmpCounter = 0
+    while lineIndex < len(sys.argv) - 1:
+        if tmpCounter == 0:
+            plotXvalues.append(procArg(sys.argv[lineIndex]))
+        elif tmpCounter == 1: 
+            plotYvalues.append(procArg(sys.argv[lineIndex]))
+        elif tmpCounter == 2:
+            plotLabels.append(sys.argv[lineIndex])
+            tmpCounter = -1
+        lineIndex += 1
+        tmpCounter += 1
     i = 0
-    while i < len(XVALUES):
-        plt.plot(plotXvalues[i], plotYvalues[i], marker = 'o')
+    while i < len(plotXvalues):
+        print (plotXvalues)
+        print (plotYvalues)
+        plt.plot(plotXvalues[i], plotYvalues[i], label = plotLabels[i], marker = 'o')
+        plt.figlegend()
+        i += 1
 
-    plt.savefig((len(sys.argv) - 1), bbox_inches = 'tight')
+    plt.show()
+    #plt.savefig(sys.argv[(len(sys.argv) - 1)], bbox_inches = 'tight')
