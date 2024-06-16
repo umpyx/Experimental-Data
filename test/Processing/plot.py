@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import sys
 
 MINARGS = 6
+USAGEMESSAGE = "USAGE: plot.py [X AXIS LABEL] [Y AXIS LABEL] [LINE 1 X VALUES] [LINE 1 Y VALUES] [LINE 1 LABEL] ... [OUTPUT GRAPH NAME]\n\n[X VALUES] and [Y VALUES] are comma-separated strings of numbers, or \"FILE={FILENAME}\"\n\nEXAMPLE:\n\tplot.py \"X_AXIS_LABEL\" \"Y_AXIS_LABEL\" \"1,2,3,4\" \"FILE=YVALUES.txt\" \"LINE1\" \"OUTPUT_NAME_WITH_EXTENSION\""
 
 def charAr2Int(inpt):
     a = len(inpt) - 1
@@ -35,7 +36,7 @@ def convertCSV2Arr(inpt):
     return OUTPUT
 
 def procArg(arg):
-    if arg[0] == "F" and arg[1] == "I" and arg[2] == "L" and arg[3] == "E" and arg[4] == "=":
+    if arg[:5] == "FILE=":
         filename = arg[5:]
         with open(filename, 'r') as TMPFILE:
             TMPSTR = TMPFILE.read()
@@ -46,11 +47,8 @@ def procArg(arg):
 
 if __name__ == "__main__":
 
-    for i in sys.argv:
-        print(i)
-        print()
     if len(sys.argv) - 1 < MINARGS:
-        print("USAGE: plot.py [X AXIS LABEL] [Y AXIS LABEL] [LINE 1 X VALUES] [LINE 1 Y VALUES] [LINE 1 LABEL] ... [OUTPUT GRAPH NAME]\nXVALUES and YVALUES can be comma-separated strings of numbers, or \"FILE={FILENAME}\"\n\nEXAMPLE:\n\tplot.py 1,2,3,4 X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES  X_AXIS_LABEL FILE=YVALUE Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py FILE=XVALUES X_AXIS_LABEL 2,4,6,8 Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION\n\tplot.py 1,2,3,4 X_AXIS_LABEL FILE=YVALUES Y_AXIS_LABEL OUTPUT_NAME_WITH_EXTENSION")
+        print(USAGEMESSAGE)
         exit(1)
 
 
@@ -76,11 +74,10 @@ if __name__ == "__main__":
         tmpCounter += 1
     i = 0
     while i < len(plotXvalues):
-        print (plotXvalues)
-        print (plotYvalues)
         plt.plot(plotXvalues[i], plotYvalues[i], label = plotLabels[i], marker = 'o')
         plt.figlegend()
         i += 1
 
-    plt.show()
-    #plt.savefig(sys.argv[(len(sys.argv) - 1)], bbox_inches = 'tight')
+    plt.savefig(sys.argv[(len(sys.argv) - 1)], bbox_inches = 'tight')
+
+    #The End :)
