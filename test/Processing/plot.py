@@ -6,15 +6,36 @@ import sys
 MINARGS = 6
 USAGEMESSAGE = "USAGE: plot.py [X AXIS LABEL] [Y AXIS LABEL] [LINE 1 X VALUES] [LINE 1 Y VALUES] [LINE 1 LABEL] ... [OUTPUT GRAPH NAME]\n\n[X VALUES] and [Y VALUES] are comma-separated strings of numbers, or \"FILE={FILENAME}\"\n\nEXAMPLE:\n\tplot.py \"X_AXIS_LABEL\" \"Y_AXIS_LABEL\" \"1,2,3,4\" \"FILE=YVALUES.txt\" \"LINE1\" \"OUTPUT_NAME_WITH_EXTENSION\""
 
-def charAr2Int(inpt):
-    a = len(inpt) - 1
-    b = 0
+def charAr2Float(inpt):
+    numChars = len(inpt) - 1
+    power = 0
     result = 0
+    sub1Result = 0 
+    sub1Power = 1
+    strTrackerForward = 0
+    strTrackerBackward = 0
+    hasDecimal = False
     for i in inpt:
-        result += int(inpt[a]) * (10**(b))
-        a -= 1
-        b += 1
-    return result
+        if i == ".":
+            hasDecimal = True
+            break
+        strTrackerForward += 1
+        strTrackerBackward += 1
+
+    strTrackerForward += 1
+    strTrackerBackward -= 1
+
+    if hasDecimal == True:
+        while strTrackerForward != numChars + 1:
+            sub1Result += int(inpt[strTrackerForward]) * (10**(sub1Power * -1))
+            sub1Power += 1
+            strTrackerForward += 1
+    while strTrackerBackward != -1:
+        result += int(inpt[strTrackerBackward]) * (10**(power))
+        power += 1
+        strTrackerBackward -= 1
+
+    return (result + sub1Result)
 
 def convertCSV2Arr(inpt):
     OUTPUT = []
@@ -22,13 +43,13 @@ def convertCSV2Arr(inpt):
     i = 0
     while True:
         if i == len(inpt):
-            OUTPUT.append(charAr2Int(tmpArr))
+            OUTPUT.append(charAr2Float(tmpArr))
             break
         elif inpt[i] == ",":
-            OUTPUT.append(charAr2Int(tmpArr))
+            OUTPUT.append(charAr2Float(tmpArr))
             tmpArr = []
         elif inpt[i] == "\n":
-            OUTPUT.append(charAr2Int(tmpArr))
+            OUTPUT.append(charAr2Float(tmpArr))
             break
         else:
             tmpArr.append(inpt[i])
@@ -60,13 +81,25 @@ if __name__ == "__main__":
     plotXvalues = []
     plotYvalues = []
     plotLabels  = []
-    lineIndex = 3
+    xAuto = False
+    xAutoTmpArr = []
     tmpCounter = 0
+    lineIndex = 3
     while lineIndex < len(sys.argv) - 1:
         if tmpCounter == 0:
-            plotXvalues.append(procArg(sys.argv[lineIndex]))
+            if sys.argv[lineIndex] == "AUTO":
+                xAuto = True
+            else:
+                plotXvalues.append(procArg(sys.argv[lineIndex]))
         elif tmpCounter == 1: 
             plotYvalues.append(procArg(sys.argv[lineIndex]))
+            if xAuto == True:
+                xAuto = False
+                i = 0
+                while i < len(plotYvalues[len(plotYvalues) - 1]):
+                    xAutoTmpArr.append(i)
+                    i += 1
+                plotXvalues.append(xAutoTmpArr)
         elif tmpCounter == 2:
             plotLabels.append(sys.argv[lineIndex])
             tmpCounter = -1
