@@ -1,0 +1,1 @@
+WHEN YOURE DONE WITH constructJSON.bash, and your JSON FILE IS DONE, run `printf "\n}" >> JSONFILE`, where JSONFILE is your file
