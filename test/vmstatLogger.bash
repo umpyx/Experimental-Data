@@ -12,4 +12,4 @@ function SIGUSR1_HANDLE(){
 
 trap SIGUSR1_HANDLE SIGUSR1
 
-vmstat -nt $TIMEINTERVAL | tail -n 1 >> $OUTPUTDIR/vmstatData.txt 
+vmstat -nt $TIMEINTERVAL >> $OUTPUTDIR/vmstatData.txt 

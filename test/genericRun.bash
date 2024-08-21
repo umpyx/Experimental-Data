@@ -7,7 +7,7 @@ echo $$ > ./PID.txt
 kill -10 $PPID
 printf "Running singlethreaded test\033[;;5m..."
 while [ $ARRSIZE -lt $MAXARRSIZE ]; do
-	./singlethread_target $ARRSIZE $ARRSIZE $ARRSIZE $ARRSIZE 
+	./singlethread_target $ARRSIZE $ARRSIZE $ARRSIZE $ARRSIZE  >> $OUTPUTFILE
 	echo $(date '+%H:%M:%S') = ARRAY SIZE: $ARRSIZE >> $OUTPUTFILE 
 	ARRSIZE=$(($ARRSIZE + $ARRSIZEINTERVAL))
 	for word in $(cat PID.txt); do
@@ -19,7 +19,7 @@ ARRSIZE=$1
 printf "Running multithreaded test\033[;;5m..."
 while [ $ARRSIZE -lt $MAXARRSIZE ]; do
 	kill -10 $PID
-	./multithread_target $ARRSIZE $ARRSIZE $ARRSIZE $ARRSIZE 
+	./multithread_target $ARRSIZE $ARRSIZE $ARRSIZE $ARRSIZE >> $OUTPUTFILE
 	echo $(date '+%H:%M:%S') = ARRAY SIZE: $ARRSIZE >> $OUTPUTFILE 
 	ARRSIZE=$(($ARRSIZE + $ARRSIZEINTERVAL))
 	for word in $(cat PID.txt); do

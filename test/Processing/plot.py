@@ -44,17 +44,15 @@ for obj in lineData:
     lineXValues.append(lineData[obj]['xValues'])
     lineYValues.append(lineData[obj]['yValues'])
 
-print(args.xAxisLabel)
-
 i:int = 0
 plt.xlabel(args.xAxisLabel[0])
 plt.ylabel(args.yAxisLabel[0])
 
 while i < len(lineYValues):
     if lineXValues[i] == []:
-        plt.plot(lineYValues[i], label = lineNames[i], marker = 'o')
+        plt.plot(lineYValues[i], label = lineNames[i], marker='o')
     else:
-        plt.plot(lineXValues[i], lineYValues[i], label = lineNames[i], marker = 'o')
+        plt.plot(lineXValues[i], lineYValues[i], label = lineNames[i], marker='o')
     plt.figlegend()
     i += 1
 

@@ -18,3 +18,8 @@ for word in $RAW; do
 		column=1
 	fi
 done
+
+tmpstr=$(head -c -1 minFaults.txt)
+printf "%s" "$tmpstr" > minFaults.txt
+tmpstr=$(head -c -1 majFaults.txt)
+printf "%s" "$tmpstr" > majFaults.txt

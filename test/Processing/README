@@ -1,1 +1,10 @@
 WHEN YOURE DONE WITH constructJSON.bash, and your JSON FILE IS DONE, run `printf "\n}" >> JSONFILE`, where JSONFILE is your file
+# How json files for plot.py are constructed:
+
+## Data extraction
+
+Data is extracted from *logger.bash output files with parse*.bash files. These files ouput desired data into raw data files, separating each value with a comma. 
+
+From this data, constructJSON.bash can create a line.json file that holds all line data, including names for multiple lines. plot.py can then be called on these json files, and will plot them accordingly
+
+*To plot automatic X values to fit your Y values, simply pass /dev/null as the xvalues file, and matplotlib will automatically fill in the X values from the empty list in lines.json*.
