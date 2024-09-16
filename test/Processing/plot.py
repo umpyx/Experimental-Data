@@ -2,6 +2,7 @@
 
 import matplotlib
 import matplotlib.pyplot as plt
+import polars as pl
 import argparse
 import json
 
@@ -16,7 +17,7 @@ def arrcmp(arr, refArr):
             arrtest2.append(refArr[i][j].__class__)
     i=0
     while i < len(arrtest1):
-        if arrtest1[i] != arrtest2[i % 3]:
+        if arrtest1[i] != arrtest2[i % 2]:
             return False
         i += 1
     return True
@@ -32,29 +33,28 @@ with open(args.lineData, 'r') as lineDataFile:
     lineData = json.loads(lineDataFile.read())
     lineDataFile.close
 
-refArr = {'class':{ 'lineName': "exampleStr", 'xValues': [1,2,3,4], 'yValues': [2,4,6,8]}}
-lineNames   = []
-lineXValues = []
-lineYValues = []
+refArr = {'class':{  'x': [1,2,3,4], 'y': [2,4,6,8]}}
 
 if arrcmp(lineData, refArr) == False:
-    print("\033[31;1m MALFORMED JSON"); exit(1)
-for obj in lineData:
-    lineNames.append(lineData[obj]['lineName'])
-    lineXValues.append(lineData[obj]['xValues'])
-    lineYValues.append(lineData[obj]['yValues'])
+    print("\033[31;1mMALFORMED JSON\033[m"); exit(1)
 
-i:int = 0
+dataFrames     = []
+dataFrameNames = []
+
+for i in lineData:
+    tmpdict = {"x" : lineData[i]["x"], "y" : lineData[i]["y"]}
+    dataFrameNames.append(i)
+    dataFrames.append(pl.from_dict(tmpdict))
+
+j=0
+for i in dataFrames:
+    csvname = "./%s-df.csv" % dataFrameNames[j]
+    i.write_csv(csvname)
+    plt.plot(pl.Series(i['x']), pl.Series(i['y']), label = dataFrameNames[j], marker='o')
+    j+=1
+
 plt.xlabel(args.xAxisLabel[0])
 plt.ylabel(args.yAxisLabel[0])
 
-while i < len(lineYValues):
-    if lineXValues[i] == []:
-        plt.plot(lineYValues[i], label = lineNames[i], marker='o')
-    else:
-        plt.plot(lineXValues[i], lineYValues[i], label = lineNames[i], marker='o')
-    plt.figlegend()
-    i += 1
 
 plt.savefig(args.outputName, bbox_inches = 'tight')
-
