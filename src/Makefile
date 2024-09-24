@@ -1,9 +1,8 @@
 all: singlethread multithread
 
-#On vega, use LD_LIBRARY_PATH=/tmp
+singlethread: main.c
+	gcc -o ../test/singlethread_target -D NUM_THREADS=1 main.c -lopenblas
 
-singlethread: singlethread.c 
-	gcc -o ../test/singlethread_target singlethread.c -lopenblas
-
-multithread: multithread.c
-	gcc -o ../test/multithread_target -D NUM_THREADS=${THREADS} multithread.c -lopenblas -lpthread
+multithread: main.c
+	printf "\033[31;1m I hope you defined THREADS\n THREADS=${THREADS}\n\033[m"
+	gcc -o ../test/multithread_target -D NUM_THREADS=${THREADS} main.c -lopenblas -lpthread
