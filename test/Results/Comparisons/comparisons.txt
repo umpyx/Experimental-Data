@@ -1,0 +1,9 @@
+# Things to compare
+
+## Y vs X ##
+
+DONT DO THE SORTING
+
+[ ] Major Faults vs Swap Usage
+[ ] Swap Usage vs Memory Usage
+[ ] R_AWAIT vs Swap Usage

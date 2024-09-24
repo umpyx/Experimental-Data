@@ -66,25 +66,29 @@ if __name__ == "__main__":
     Values = []
     means = []
     ConfidenceIntervals = []
-    cur_max = 0
-    maxIndex = ""
+    xes = []
 
     for i in inputDict:
         n=0
+        if xes == []:
+            xes = inputDict[i]["x"]
         while n < len(inputDict[i]["y"]):
             try: 
                 Values[n].append(inputDict[i]["y"][n])
             except:
                 Values.append([inputDict[i]["y"][n]])
             n+=1
-    print(Values)
+
+    n=0
     for i in Values:
         tmpmean = mean(i)
         ConfidenceIntervals.append(calc_ci(
             stdev(len(i), tmpmean, i),
             len(i),
             95
-        ))
+            ))
+        n+=1
         means.append(tmpmean)
-    print("\"%s\" : {\n\t\"y\" : [%s],\n\t\"ci\" : [%s]\n}," % (name, tuple(means), tuple(ConfidenceIntervals)))
+
+    print("\"%s\" : {\n\t\"x\" : %s,\n\t\"y\" : %s,\n\t\"ci\" : %s\n}," % (name, xes, means, ConfidenceIntervals))
 
